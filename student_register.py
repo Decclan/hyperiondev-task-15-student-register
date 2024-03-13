@@ -12,6 +12,8 @@
 # ● Include a dotted line after each student ID because this document will be used as an attendance
 # register, which the students will sign when they arrive at the exam venue.
 #===================================================================================================
+import re
+
 def get_integer(prompt):
     """Ask user for valid whole number"""
     while True:
@@ -26,6 +28,20 @@ def get_integer(prompt):
 
         except ValueError:
             print("Invalid input. Please enter a valid number.")
+#===================================================================================================
+def basic_alphabet_input(prompt):
+    """Basic keyboard input validation"""
+    while True:
+        try:
+            input_string = input(prompt)
+            # Basic keyboard character set
+            pattern = re.compile(r'^[a-zA-Z]+$')
+            if re.match(pattern, input_string):
+                    return input_string
+            else:
+                print("Input contains invalid characters.")
+        except ValueError:
+            print("Input does not meet requirements.")
 #===================================================================================================
 def user_choice(option):
     """Yes or no boolean choice input function (y/n) - non case sensitive"""
@@ -69,6 +85,10 @@ def main():
     print(f"{total_students} entries will be created.")
     # Fetch student I.D limit
     id_limit = get_integer("What is the character limit of the student I.D? \n")
+    # Placeholder
+    student_name = basic_alphabet_input("Please enter the students name: \n")
+    # Placeholder
+    student_phone = get_integer("Enter the students phone number: ")
     # Ensure user is aware the program will overwrite the file if it exists
     proceed = user_choice("If the file exists, would you like to overwrite the data? y/n: \n")
     display_list = user_choice("Would you like to view the list of I.D's successfully added? y/n: \n")
