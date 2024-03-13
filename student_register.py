@@ -97,8 +97,6 @@ def main():
             while counter != total_students:
                 # Iterate for each student in total students
                 for student_id in range(0, total_students):
-
-
                     # Add the type of exam
                     student_exam = basic_alphabet_input("Enter the students phone number: ")
                     # Student I.D declared if not already in added I.D list
