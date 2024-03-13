@@ -35,7 +35,7 @@ def basic_alphabet_input(prompt):
         try:
             input_string = input(prompt)
             # Basic keyboard character set
-            pattern = re.compile(r'^[a-zA-Z]+$')
+            pattern = re.compile(r'^[a-zA-Z ]+$')
             if re.match(pattern, input_string):
                     return input_string
             else:
@@ -65,7 +65,7 @@ def user_choice(option):
 def items_in_list(existing_list, limit):
     """Checks if input has already been entered, appends acceptable value to list for referencing"""
     while True:
-        user_input = get_integer("Enter a value: ")
+        user_input = get_integer("Enter the student I.D number: \n")
         # Cast validated number input to string to get input length
         length_of_input = len(str(user_input))
         # Invalid if the input exists in list or is too long
@@ -97,10 +97,10 @@ def main():
             while counter != total_students:
                 # Iterate for each student in total students
                 for student_id in range(0, total_students):
-                    # Add the type of exam
-                    student_exam = basic_alphabet_input("Enter the students exam type: ")
                     # Input student name
                     student_name = basic_alphabet_input("Please enter the students name: \n")
+                    # Add the type of exam
+                    student_exam = basic_alphabet_input("Enter the students exam type: \n")
                     # Student I.D declared if not already in added I.D list
                     student_id = items_in_list(added_id, id_limit)
                     # Cast I.D to string to compare the length to the input limit integer
@@ -110,7 +110,7 @@ def main():
                         #for i in range(id_limit):
                         while len(student_id_string) < id_limit:
                             student_id_string = "0" + student_id_string
-                        file.write(f"Student: {student_name} - Exam: {student_exam} - {student_id_string}:{dotted_line}\n")
+                        file.write(f"Student: {student_name}\t- Exam: {student_exam}\t- I.D: {student_id_string}:{dotted_line}\n")
                         # Display added I.D and full list of current I.D's
                         if display_list:
                             print(f"Current List of I.D's added: {added_id}")
