@@ -99,6 +99,8 @@ def main():
                 for student_id in range(0, total_students):
                     # Add the type of exam
                     student_exam = basic_alphabet_input("Enter the students phone number: ")
+                    # Input student name
+                    student_name = basic_alphabet_input("Please enter the students name: \n")
                     # Student I.D declared if not already in added I.D list
                     student_id = items_in_list(added_id, id_limit)
                     # Cast I.D to string to compare the length to the input limit integer
@@ -108,8 +110,7 @@ def main():
                         #for i in range(id_limit):
                         while len(student_id_string) < id_limit:
                             student_id_string = "0" + student_id_string
-                            #print(student_id_string)
-                        file.write(f"Exam: {student_exam}:{student_id_string}:{dotted_line}\n")
+                        file.write(f"Student: {student_name} - Exam: {student_exam} - {student_id_string}:{dotted_line}\n")
                         # Display added I.D and full list of current I.D's
                         if display_list:
                             print(f"Current List of I.D's added: {added_id}")
