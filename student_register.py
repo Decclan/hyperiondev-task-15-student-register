@@ -85,8 +85,8 @@ def main():
     print(f"{total_students} entries will be created.")
     # Fetch student I.D limit
     id_limit = get_integer("What is the character limit of the student I.D? \n")
-    # Placeholder
-    student_name = basic_alphabet_input("Please enter the students name: \n")
+
+    
     # Placeholder
     student_phone = get_integer("Enter the students phone number: ")
     # Ensure user is aware the program will overwrite the file if it exists
@@ -101,6 +101,8 @@ def main():
             while counter != total_students:
                 # Iterate for each student in total students
                 for student_id in range(0, total_students):
+                    # Input student name
+                    student_name = basic_alphabet_input("Please enter the students name: \n")
                     # Student I.D declared if not already in added I.D list
                     student_id = items_in_list(added_id, id_limit)
                     # Cast I.D to string to compare the length to the input limit integer
@@ -111,7 +113,7 @@ def main():
                         while len(student_id_string) < id_limit:
                             student_id_string = "0" + student_id_string
                             #print(student_id_string)
-                        file.write(f"{student_id_string}:{dotted_line}\n")
+                        file.write(f"Student: {student_name} : {student_id_string}:{dotted_line}\n")
                         # Display added I.D and full list of current I.D's
                         if display_list:
                             print(f"Current List of I.D's added: {added_id}")
